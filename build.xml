@@ -3,4 +3,11 @@
 		<mkdir dir="bin"/>
 		<javac srcdir="src/main/java" destdir="bin"/>
 	</target>
+	<java classname="ConwayGameOfLifeTest" dir="bin">
+		<arg value="-h"/>
+    		<classpath>
+			<pathelement location="bin"/>
+			<pathelement path="bin"/>
+    		</classpath>
+	</java>	
 </project>
