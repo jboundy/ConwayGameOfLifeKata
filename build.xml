@@ -9,5 +9,9 @@
 			<pathelement location="bin"/>
 			<pathelement path="bin"/>
     		</classpath>
-	</java>	
+	</java>
+	<copy todir="bin">
+    	<fileset dir="resources"
+        	     includes="**/*.xml,**/*.properties,**/*.txt,**/*.ico" />
+	</copy>	
 </project>
