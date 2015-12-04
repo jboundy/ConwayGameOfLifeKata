@@ -1,14 +1,15 @@
 <project default="compile">
 	<target name="compile">
 		<mkdir dir="bin"/>
-		<javac srcdir="src/main/java" destdir="bin"/>
+		<javac srcdir="src/main/java" includeantruntime="false" destdir="bin"/>
 	</target>
-	<java classname="ConwayGameOfLifeTest" dir="bin">
+	<java fork="true" classname="ConwayGameOfLifeTest" dir="bin">
 		<arg value="-h"/>
     		<classpath>
 			<pathelement location="bin"/>
 			<pathelement path="bin"/>
     		</classpath>
+		<assertions enableSystemAssertions="true"><enable/></assertions>
 	</java>
 	<copy todir="bin">
     	<fileset dir="resources"
