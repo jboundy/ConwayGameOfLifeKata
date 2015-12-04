@@ -1,3 +1,5 @@
+package kata.gameoflife;
+
 import java.io.File;
 import java.nio.file.Files;
 import java.nio.file.Paths;
@@ -11,9 +13,15 @@ public class GridTest {
 
   public void ReadGridTest() throws IOException {
     	boolean[][] readgrid = grid.ReadGrid(TESTFILE); 
-   	assert(readgrid[1][4] == true);
+  	System.out.println("Running assertGridProperties()");
+	assertGridPopulated(readgrid);
+   }
+
+ public void assertGridPopulated(boolean[][] readgrid) {
+	assert(readgrid[1][4] == true);
 	assert(readgrid[1][3] == false);
 	assert(readgrid[1][5] == false);
-	assert(readgrid[2][4] == true);
-  }
+	assert(readgrid[2][4] == true); 
+ 
+ }
 }

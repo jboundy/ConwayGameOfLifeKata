@@ -1,3 +1,5 @@
+package kata.gameoflife;
+
 import java.io.IOException;
 
 public class ConwayGameOfLifeTest {

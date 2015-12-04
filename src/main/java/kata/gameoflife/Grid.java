@@ -1,3 +1,6 @@
+package kata.gameoflife;
+
+import java.util.Arrays;
 import java.io.File;
 import java.nio.file.Files;
 import java.nio.file.Paths;
@@ -14,13 +17,15 @@ public class Grid {
   public boolean[][] ReadGrid(String file) throws IOException {
       boolean[][] grid = new boolean[4][8];
       List<String> lines = Files.readAllLines(Paths.get(file), Charset.forName("UTF-8"));
-      for (int i = 0; i < lines.size(); i++) {
-        char[] charline = lines.get(i).toCharArray();
+	    	
+
+       for (int i = 0; i < lines.size(); i++) {
+	char[] charline = lines.get(i).toCharArray();
         for (int c = 0; c < charline.length; c++) {
-          if (c == '.') {
-            grid[i][c] = false;
-          } else {
+          if (charline[c] == '*') {
             grid[i][c] = true;
+          } else  {
+            grid[i][c] = false;
           }
         }
       }

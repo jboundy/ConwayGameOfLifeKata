@@ -1,18 +1,32 @@
-<project default="compile">
-	<target name="compile">
-		<mkdir dir="bin"/>
-		<javac srcdir="src/main/java" includeantruntime="false" destdir="bin"/>
+<project default="main">
+	<property name="bin.dir" value="bin"/>
+	<property name="classes.dir" value="${bin.dir}/classes"/>
+
+	<target name="clean">
+		<delete failonerror="false" dir="${bin.dir}"/>
 	</target>
-	<java fork="true" classname="ConwayGameOfLifeTest" dir="bin">
-		<arg value="-h"/>
-    		<classpath>
-			<pathelement location="bin"/>
-			<pathelement path="bin"/>
-    		</classpath>
-		<assertions enableSystemAssertions="true"><enable/></assertions>
-	</java>
-	<copy todir="bin">
-    	<fileset dir="resources"
-        	     includes="**/*.xml,**/*.properties,**/*.txt,**/*.ico" />
-	</copy>	
+	<target name="compile">
+		<mkdir dir="${classes.dir}"/>
+		<javac srcdir="src/main/java" includeantruntime="false" destdir="${classes.dir}"/>
+		<javac srcdir="src/test/java" includeantruntime="false" destdir="${classes.dir}"/>
+	</target>
+	<target name="copy">
+		<copy todir="${bin.dir}">
+    		<fileset dir="resources"
+        		     includes="**/*.xml,**/*.properties,**/*.txt,**/*.ico" />
+		</copy>	
+	</target>
+	<target name="run">
+		<java fork="true" classname="kata.gameoflife.ConwayGameOfLifeTest" dir="${bin.dir}">
+			<arg value="-h"/>
+    			<classpath>
+				<pathelement location="${classes.dir}"/>
+				<pathelement path="${classes.dir}"/>
+    			
+			</classpath>
+			<assertions enableSystemAssertions="true"><enable/></assertions>
+		</java>
+	</target>
+
+	<target name="main" depends="compile,copy,run"/>
 </project>
