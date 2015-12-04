@@ -15,7 +15,7 @@ public class ConwayGameOfLifeTest {
 
 	public static void runGridTest() throws IOException {
 		pmr("new GridTest()");
-		new GridTest().ReadGrid(TESTFILE);
+		new GridTest().ReadGridTest();
 	}
 
 	public void runTests() throws IOException{
