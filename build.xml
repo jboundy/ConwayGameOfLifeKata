@@ -1,25 +1,45 @@
 <project default="main">
 	<property name="bin.dir" value="bin"/>
 	<property name="classes.dir" value="${bin.dir}/classes"/>
+	<property name="bin.dir.lib" value="${bin.dir}/lib"/>
+	<property name="bin.dir.resources" value="${bin.dir}/resources"/>
 
 	<target name="clean">
 		<delete failonerror="false" dir="${bin.dir}"/>
 	</target>
+
 	<target name="compile">
-		<mkdir dir="${classes.dir}"/>
-		<javac srcdir="src/main/java" includeantruntime="false" destdir="${classes.dir}"/>
+		<javac srcdir="src/main/java" includeantruntime="false" destdir="${classes.dir}">
+			<classpath>
+    		
+  			<fileset dir="${bin.dir.lib}" includes="*.jar" />
+		</classpath>
+		</javac>
 		<javac srcdir="src/test/java" includeantruntime="false" destdir="${classes.dir}"/>
+	
 	</target>
+	
 	<target name="copy">
+		<mkdir dir="${bin.dir.lib}"/>
+		<mkdir dir="${classes.dir}"/>
+		<mkdir dir="${bin.dir.resources}"/>
 		<copy todir="${bin.dir}">
     		<fileset dir="resources"
         		     includes="**/*.xml,**/*.properties,**/*.txt,**/*.ico" />
+		</copy>
+		<copy todir="${bin.dir.lib}">
+			<fileset dir="lib"/>
 		</copy>	
+		<copy todir="${bin.dir.resources}">
+			<fileset dir="resources"/>
+		</copy>
 	</target>
+	
 	<target name="run">
 		<java fork="true" classname="kata.gameoflife.ConwayGameOfLifeTest" dir="${bin.dir}">
 			<arg value="-h"/>
-    			<classpath>
+    		<classpath>
+    			<pathelement location="${bin.dir.lib}"/>
 				<pathelement location="${classes.dir}"/>
 				<pathelement path="${classes.dir}"/>
     			
@@ -28,5 +48,5 @@
 		</java>
 	</target>
 
-	<target name="main" depends="compile,copy,run"/>
+	<target name="main" depends="copy,compile,run"/>
 </project>
