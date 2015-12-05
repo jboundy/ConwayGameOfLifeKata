@@ -16,24 +16,30 @@ public class ConwayGameOfLifeSocket {
 	@OnWebSocketConnect
 	public void handleConnect(Session session) {
 		this.session = session;
+		System.out.println("New session");
 	}
 
 	// Called when the connection is closed, may want to log the statusCode/Reason
 	@OnWebSocketClose
 	public void handleClose(int statusCode, String reason) {
-
+		System.out.println(reason + " " + statusCode);
 	}
 
 	// Called when a message is received from the browser (e.g. WebSocket.send(message))
 	@OnWebSocketMessage
 	public void handleMessage(String message) {
+		/* Example, check the name of the message, and if it is a begin message then set some kind of fixed rate
+		   execution to help visualize conways game of life:
 
+		   executor.scheduleAtFixedRate( () -> { send("MESSAGE"); },0, 1, TimeUnit.Seconds );
+			
+		*/
 	}
 
 	// Called if there is an error that needs to be handled.
 	@OnWebSocketError
 	public void handleError(Throwable error) {
-
+		System.err.println("HandleError");
 	}
 
 	// This is a message handler that can send messages back to the session (Which is just a thread that we are messaging.)

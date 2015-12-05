@@ -1,4 +1,4 @@
-var ws = new WebSocket("ws://localhost:8080/stocks");
+var ws = new WebSocket("ws://localhost:8080/game");
 
 // Called when the socket connection established
 ws.onopen = function() {
