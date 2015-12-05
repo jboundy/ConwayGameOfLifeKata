@@ -17,8 +17,9 @@ You start with a two dimensional grid of cells, where each cell is either alive 
 4. Any dead cell with exactly three live neighbors becomes a live cell.
 
 
-## TO DO
-1. Create an embedded Jetty Server or another light framework and have this logic run in the backend
-2. Test using WebSockets from the front end to the backend
+## Additions: 
+Added two libraries to the project: javax servlets and jetty-all.jar... The only reason, is because we wanted a very lightweight web framwework without implementing our own in Java SE. Tried it, but it would be too cumbersome. Jetty without Jersey really isn't too bad, and creating lightweight servlets for REST API is not too bad either.
+
+Created a default javascript file that can handle webserver methods. Once we get more information we can update the index.html.
 
 ? Why wouldn't we just write everything in JavaScript? Well, because we want to learn multiple stacks and do some katas. Will be fun.
