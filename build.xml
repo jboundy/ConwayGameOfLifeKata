@@ -10,8 +10,8 @@
 
 	<target name="compile">
 		<javac srcdir="src/main/java" includeantruntime="false" destdir="${classes.dir}">
-			<classpath>
-    		
+		<classpath>
+    		<fileset dir="${classes.dir}" includes="kata/server/*.class"/>
   			<fileset dir="${bin.dir.lib}" includes="*.jar" />
 		</classpath>
 		</javac>
@@ -36,13 +36,13 @@
 	</target>
 	
 	<target name="run">
-		<java fork="true" classname="kata.gameoflife.ConwayGameOfLifeTest" dir="${bin.dir}">
+		<java fork="true" classname="kata.gameoflife.CustomTestRunner" dir="${bin.dir}">
+
 			<arg value="-h"/>
     		<classpath>
-    			<pathelement location="${bin.dir.lib}"/>
+    			<fileset dir="${bin.dir.lib}" includes="*.jar"/>
 				<pathelement location="${classes.dir}"/>
 				<pathelement path="${classes.dir}"/>
-    			
 			</classpath>
 			<assertions enableSystemAssertions="true"><enable/></assertions>
 		</java>

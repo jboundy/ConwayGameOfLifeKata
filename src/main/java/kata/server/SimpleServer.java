@@ -12,9 +12,37 @@ import java.io.File;
  */
 public class SimpleServer
 {
-    public static void main( String[] args ) throws Exception
-    {
-        File resources = new File("resources/static");
+    private  Server server;
+    private volatile boolean state = false;
+
+    public  boolean isStarted() {
+        if (server == null) { return false; }
+           return server.getState().contains("STARTED");
+        }
+    
+    
+
+    public boolean State() {
+        return this.state;
+    }
+
+    public  String getState() {
+     return server.getState();  
+    }
+
+    public void stop() {
+        try {
+            if (server != null) {
+                server.stop();
+                server = null;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void run(String[] args) throws Exception { 
+         File resources = new File("resources/static");
 
         if (args.length == 1) {
             resources = new File(args[0], "static");
@@ -26,7 +54,7 @@ public class SimpleServer
             System.exit(1);
         }
         
-        Server server = new Server(8080);
+        this.server = new Server(8080);
 
         // Creating and setting resources base
         ResourceHandler resourceHandler = new ResourceHandler();
@@ -48,7 +76,11 @@ public class SimpleServer
         server.setHandler(handlers);
 
         server.start();
-        System.out.println("Server started");
-        server.join();
+        this.state = true;
+    }
+
+    public static void main( String[] args ) throws Exception
+    {
+       new SimpleServer().run(args);
     }
 }
