@@ -16,7 +16,8 @@ public class GridTest {
     readGrid = grid.ReadGrid(TESTFILE);
   	System.out.println("Running assertGridProperties()");
 	  assertGridPopulated();
-    assertAliveNeighborCheck();
+	  
+    assertAliveNeighorCheck();
    }
 
  public void assertGridPopulated() {
