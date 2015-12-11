@@ -2,7 +2,7 @@ var ws = new WebSocket("ws://localhost:8080/game");
 
 // Called when the socket connection established
 ws.onopen = function() {
-	appendLog("Connected to stock service! Pres 'Start' to get stock info.");
+	appendLog("Connected to the websocket service.");
 };
 
 // Called when a message is received from the server
@@ -19,7 +19,7 @@ ws.onerror = function(error) {
 };
 
 // appends logText to log text area
-function appendLog(log) {
+function appendLog(logText) {
 	var log = document.getElementById("log");
 	log.value = log.value + logText + "\n";
 }

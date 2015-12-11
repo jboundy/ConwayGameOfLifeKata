@@ -17,6 +17,7 @@ public class ConwayGameOfLifeSocket {
 	public void handleConnect(Session session) {
 		this.session = session;
 		System.out.println("New session");
+		send("Success - From the server.");
 	}
 
 	// Called when the connection is closed, may want to log the statusCode/Reason
@@ -34,6 +35,7 @@ public class ConwayGameOfLifeSocket {
 		   executor.scheduleAtFixedRate( () -> { send("MESSAGE"); },0, 1, TimeUnit.Seconds );
 			
 		*/
+		   
 	}
 
 	// Called if there is an error that needs to be handled.
