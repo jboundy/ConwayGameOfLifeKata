@@ -10,18 +10,32 @@ import java.io.IOException;
 public class GridTest {
  private Grid grid = new Grid();
  private static String TESTFILE = "default_ingest.txt";
+ private boolean[][] readGrid;
 
   public void ReadGridTest() throws IOException {
-    	boolean[][] readgrid = grid.ReadGrid(TESTFILE); 
+    readGrid = grid.ReadGrid(TESTFILE);
   	System.out.println("Running assertGridProperties()");
-	assertGridPopulated(readgrid);
+	  assertGridPopulated();
+    assertAliveNeighborCheck();
    }
 
- public void assertGridPopulated(boolean[][] readgrid) {
-	assert(readgrid[1][4] == true);
-	assert(readgrid[1][3] == false);
-	assert(readgrid[1][5] == false);
-	assert(readgrid[2][4] == true); 
- 
+ public void assertGridPopulated() {
+	assert(readGrid[1][4] == true);
+	assert(readGrid[1][3] == false);
+	assert(readGrid[1][5] == false);
+	assert(readGrid[2][4] == true);
+  assert(readGrid[0][0] == false);
+  assert(readGrid[3][7] == false);
+ }
+
+ public void assertAliveNeighorCheck(){
+  assert(grid.GetAliveNeighbors(1, 4) == 2);
+ }
+
+ public void assertCheckNeighborBounds(){
+   //assert(grid.CheckNeighborBounds(1,1) == true);
+   //assert(grid.CheckNeighborBounds(0,0) == false);
+   //assert(grid.CheckNeighborBounds(7,7) == false);
+   //assert(grid.CheckNeighborBounds(1,0) == false);
  }
 }
