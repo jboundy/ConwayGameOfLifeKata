@@ -11,7 +11,7 @@ import java.io.IOException;
 public class Grid {
   private boolean[][] grid = new boolean[4][8];
 
-  public boolean[][] ReadGrid(String file) throws IOException {
+  public boolean[][] readGrid(String file) throws IOException {
     grid = new boolean[4][8];
     List<String> lines = Files.readAllLines(Paths.get(file), Charset.forName("UTF-8"));
 
@@ -28,14 +28,22 @@ public class Grid {
     return grid;
   }
 
-  public int GetAliveNeighbors(int x, int y){
-    return 2;
+  public int getNumAliveNeighbors(int x, int y){
+    // check all around
+  
   }
 
-  public boolean CheckNeighborBounds(int x, int y){
+  public boolean isNeighborAlive(int x, int y) {
+    if (checkNeighborBounds(x, y)) {
+      return grid[x][y];
+    }
+    return false;
+  }
+
+  public boolean checkNeighborBounds(int x, int y){
     int width = grid.length - 1;
     int height  = grid[width].length - 1;
-    if(x - 1 < 0 || y - 1 < 0 || x + 1 > width || y + 1 > height ){
+    if(x < 0 || y  < 0 || x > width || y  > height ){
       return false;
     }
     return true;
