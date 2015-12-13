@@ -28,4 +28,3 @@ function appendLog(logText) {
 function sendToServer(message) {
 	ws.send(message);
 }
-

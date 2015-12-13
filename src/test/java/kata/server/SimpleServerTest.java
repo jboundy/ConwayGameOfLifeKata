@@ -15,7 +15,7 @@ public class SimpleServerTest implements Runnable {
 
     public void terminate() {
     		server.stop();
-    	
+
     }
 
       public boolean State() {
@@ -37,10 +37,10 @@ public class SimpleServerTest implements Runnable {
 	}
 
 	public void testConnectionToServer() {
-		try { 
+		try {
 			String response = HttpClient.sendGet("http://localhost:8080/index.html");
 			assert(response.contains("Hello World"));
-		} catch (Exception e) { 
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}

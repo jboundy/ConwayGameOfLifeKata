@@ -1,5 +1,5 @@
  package kata.server;
- 
+
 import org.eclipse.jetty.server.Server;
 import org.eclipse.jetty.servlet.ServletContextHandler;
 import org.eclipse.jetty.server.handler.ResourceHandler;
@@ -19,15 +19,15 @@ public class SimpleServer
         if (server == null) { return false; }
            return server.getState().contains("STARTED");
         }
-    
-    
+
+
 
     public boolean State() {
         return this.state;
     }
 
     public  String getState() {
-     return server.getState();  
+     return server.getState();
     }
 
     public void stop() {
@@ -41,19 +41,19 @@ public class SimpleServer
         }
     }
 
-    public void run(String[] args) throws Exception { 
+    public void run(String[] args) throws Exception {
          File resources = new File("resources/static");
 
         if (args.length == 1) {
             resources = new File(args[0], "static");
-        } 
+        }
 
         if (!resources.exists()) {
             System.err.println("Can't find resources file or the input directory for resources");
             System.err.println("Usage: <resources directory>");
             System.exit(1);
         }
-        
+
         this.server = new Server(8080);
 
         // Creating and setting resources base
@@ -65,7 +65,7 @@ public class SimpleServer
         //Enable Directory Listing
         resourceHandler.setDirectoriesListed(true);
 
-        // Setting Context Sources
+        // Setting Context  Sources
         ServletContextHandler contextHandler = new ServletContextHandler(ServletContextHandler.SESSIONS);
         contextHandler.setContextPath("/");
         contextHandler.addServlet(ConwaySocketServlet.class, "/game");

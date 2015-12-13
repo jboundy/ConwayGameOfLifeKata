@@ -20,6 +20,8 @@ public class GridTest {
 	assertAliveNeighorCheck();
 	System.out.println("Running assertCheckNeighborBounds()");
 	assertCheckNeighborBounds();
+  System.out.println("Running assertUpdatedCellState()");
+  assertUpdatedCellState();
   }
 
  public void assertGridPopulated() {
@@ -28,7 +30,7 @@ public class GridTest {
 	assert(readGrid[1][5] == false);
 	assert(readGrid[2][4] == true);
  	assert(readGrid[0][0] == false);
-  	assert(readGrid[3][7] == false);
+   assert(readGrid[3][7] == false);
  }
 
  public void assertAliveNeighorCheck(){
@@ -51,5 +53,13 @@ public class GridTest {
    	assert(grid.checkNeighborBounds(8,7) == false);
    	assert(grid.checkNeighborBounds(1,8) == false);
    	assert(grid.checkNeighborBounds(3,7) == true);
+ }
+
+ public void assertUpdatedCellState(){
+   assert(grid.updateCellState(1,3) == true);
+   assert(grid.updateCellState(1,4) == true);
+   assert(grid.updateCellState(0,5) == false);
+   assert(grid.updateCellState(2,3) == true);
+   assert(grid.updateCellState(7,7) == false);
  }
 }

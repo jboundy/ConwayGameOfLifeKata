@@ -10,7 +10,7 @@ import java.util.Map;
 
 import javax.net.ssl.HttpsURLConnection;
 /* HttpURLConnection does all this magic stuff to connect to web servers
-	List of methods: 
+	List of methods:
 		disconnect()
 		getErrorStream()
 		getFollowRedirects()
@@ -24,7 +24,7 @@ public class HttpClient {
 	private static final String USER_AGENT = "HttpClient";
 
 	// HTTP GET request
-	public static String sendGet(String url) throws Exception {		
+	public static String sendGet(String url) throws Exception {
 		URL obj = new URL(url);
 
 		HttpURLConnection con = (HttpURLConnection) obj.openConnection();
@@ -65,7 +65,7 @@ public class HttpClient {
 
 		// Really map the paremeters to a string using a StringBuffer.
 		String urlParameters = "sn=C02G8416DRJM&cn=&locale=&caller=&num=12345";
-		
+
 		// Send post request
 		con.setDoOutput(true);
 		DataOutputStream wr = new DataOutputStream(con.getOutputStream());
@@ -84,7 +84,7 @@ public class HttpClient {
 			response.append(inputLine);
 		}
 		in.close();
-		
+
 		return response.toString();
 	}
 }

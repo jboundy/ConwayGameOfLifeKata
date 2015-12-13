@@ -32,12 +32,12 @@ public class Grid {
     int counter = 0;
     for (int i = -1; i <= 1; i++) {
       for (int j = -1; j <= 1; j++) {
-        if (!(i == 0 && j == 0)) { 
+        if (!(i == 0 && j == 0)) {
           if (isNeighborAlive(x + i, j + y)) { counter++; };
         }
       }
     }
-    return counter;  
+    return counter;
   }
 
   public boolean isNeighborAlive(int x, int y) {
@@ -54,5 +54,20 @@ public class Grid {
       return false;
     }
     return true;
+  }
+
+  public boolean updateCellState(int x, int y){
+    int aliveNeighbor = getNumAliveNeighbors(x, y);
+    boolean isAlive = isNeighborAlive(x, y);
+
+    if(isAlive && (aliveNeighbor == 2 || aliveNeighbor == 3)){
+      return true;
+    }
+    if(!(isAlive) && aliveNeighbor == 3){
+      return true;
+    }
+
+    return false;
+
   }
 }
