@@ -33,16 +33,16 @@ public class GridTest {
 
  public void assertAliveNeighorCheck(){
   	assert(grid.getNumAliveNeighbors(1, 4) == 2);
-  	//assert(grid.getNumAliveNeighbors(0, 0) == 0);
-  	//assert(grid.getNumAliveNeighbors(0, 4) == 1);
+  	assert(grid.getNumAliveNeighbors(0, 0) == 0);
+  	assert(grid.getNumAliveNeighbors(0, 4) == 1);
  }
 
  public void assertNeighborAlive() {
- 	assert(grid.isPointAlive(1,1) == false);
- 	assert(grid.isPointAlive(1, 4) == true);
- 	assert(grid.isPointAlive(2, 4) == true);
- 	assert(grid.isPointAlive(-1, -1) == false);
- 	assert(grid.isPointAlive(8, 8) == false);
+ 	assert(grid.isNeighborAlive(1, 1) == false);
+ 	assert(grid.isNeighborAlive(1, 4) == true);
+ 	assert(grid.isNeighborAlive(2, 4) == true);
+ 	assert(grid.isNeighborAlive(-1, -1) == false);
+ 	assert(grid.isNeighborAlive(8, 8) == false);
  }
 
  public void assertCheckNeighborBounds(){

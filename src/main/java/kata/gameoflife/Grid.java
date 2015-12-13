@@ -29,8 +29,15 @@ public class Grid {
   }
 
   public int getNumAliveNeighbors(int x, int y){
-    // check all around
-  
+    int counter = 0;
+    for (int i = -1; i <= 1; i++) {
+      for (int j = -1; j <= 1; j++) {
+        if (!(i == 0 && j == 0)) { 
+          if (isNeighborAlive(x + i, j + y)) { counter++; };
+        }
+      }
+    }
+    return counter;  
   }
 
   public boolean isNeighborAlive(int x, int y) {
