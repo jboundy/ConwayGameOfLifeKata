@@ -10,6 +10,8 @@ import java.io.IOException;
 
 public class Grid {
   private boolean[][] grid = new boolean[4][8];
+  private int width;
+  private int height;
 
   public boolean[][] readGrid(String file) throws IOException {
     grid = new boolean[4][8];
@@ -25,7 +27,18 @@ public class Grid {
         }
       }
     }
+
+    height = grid.length;
+    width = grid[height -1].length;
     return grid;
+  }
+
+  public int getHeight() {
+    return height;
+  }
+
+  public int getWidth() {
+    return width; 
   }
 
   public int getNumAliveNeighbors(int x, int y){
@@ -69,5 +82,17 @@ public class Grid {
 
     return false;
 
+  }
+
+  public boolean[][] nextGenerationGrid() {
+    boolean[][] updatedGrid = new boolean[height][width];
+    for (int i = 0; i < height; i++) {
+      for (int j = 0; j < width; j++) {
+        updatedGrid[i][j] = updateCellState(i, j);
+      }
+    }   
+
+     grid = updatedGrid;
+      return updatedGrid;
   }
 }

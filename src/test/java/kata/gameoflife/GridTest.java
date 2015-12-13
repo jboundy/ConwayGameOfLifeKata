@@ -22,6 +22,13 @@ public class GridTest {
 	assertCheckNeighborBounds();
   System.out.println("Running assertUpdatedCellState()");
   assertUpdatedCellState();
+  	System.out.println("Running nextGenerationGrid()");
+  	assertUpdateGridState();
+  }
+
+  public void assertHeight() {
+  	assert(grid.getHeight() == 8);
+  	assert(grid.getWidth() == 4);
   }
 
  public void assertGridPopulated() {
@@ -61,5 +68,13 @@ public class GridTest {
    assert(grid.updateCellState(0,5) == false);
    assert(grid.updateCellState(2,3) == true);
    assert(grid.updateCellState(7,7) == false);
+ }
+
+ public void assertUpdateGridState() {
+ 	boolean[][] updatedGrid = grid.nextGenerationGrid();
+ 	assert(grid.isNeighborAlive(1,1) == false);
+ 	assert(grid.isNeighborAlive(1, 3) == true);
+ 	assert(grid.isNeighborAlive(7,7) == false);
+ 	assert(grid.isNeighborAlive(2, 4) == true);
  }
 }
