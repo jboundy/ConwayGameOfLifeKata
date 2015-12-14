@@ -7,17 +7,28 @@ import java.nio.file.Paths;
 import java.nio.charset.Charset;
 import java.util.List;
 import java.io.IOException;
-import java.util.Scanner;
+
 
 public class Grid {
-  private boolean[][] grid = new boolean[4][8];
+  private boolean[][] grid;
   private int width;
   private int height;
 
-  public boolean[][] readGrid(String file) throws IOException {
-    grid = new boolean[4][8];
-    List<String> lines = Files.readAllLines(Paths.get(file), Charset.forName("UTF-8"));
+  public Grid(String filename) throws IOException{
+    readGrid(filename);
+  }
 
+  public Grid() {
+
+  }
+
+  public boolean[][] readGrid(String file) throws IOException {
+    List<String> lines = Files.readAllLines(Paths.get(file), Charset.forName("UTF-8"));
+    height = lines.size();
+    width = lines.get(0).toCharArray().length;
+ 
+    grid = new boolean[height][width];
+  
     for (int i = 0; i < lines.size(); i++) {
       char[] charline = lines.get(i).toCharArray();
       for (int c = 0; c < charline.length; c++) {
@@ -29,8 +40,7 @@ public class Grid {
       }
     }
 
-    height = grid.length;
-    width = grid[height -1].length;
+    
     return grid;
   }
 

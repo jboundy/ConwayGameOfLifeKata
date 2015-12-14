@@ -6,7 +6,7 @@ import java.io.InputStreamReader;
 
 
 public class ConwayGameOfLife {
-	private final static String DEFAULT_FILE = "../resources/default_ingest.txt";
+	private final static String DEFAULT_FILE = "../resources/second_ingest.txt";
 
 	public static void main(String[] args) throws InterruptedException, IOException { 
 		InputStreamReader fileInputStream = new InputStreamReader(System.in);
