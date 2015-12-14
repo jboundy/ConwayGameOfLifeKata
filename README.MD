@@ -21,6 +21,7 @@ You start with a two dimensional grid of cells, where each cell is either alive 
 The lib directory contains the few external libraries used in the project. 
 
 Two default files: default_ingest.txt and second_ingest.txt that are used to test Conway Game of Life. 
+
 1. kata.gameoflife.ConwayGameOfLife is a  main method that prints the game to the main server. You can run the console from ant: "ant run_console"
 2. kata.gameoflife.SimpleServer starts a Server that serves a websocket. The server launches to localhost:8080 by default. The index.html has a lightweight javascript app that opens a webservice to ConwayGameOfLifeSocket. Which sends messages to the client WebSocket. You can run the server from ant: "ant run_server" 
 
