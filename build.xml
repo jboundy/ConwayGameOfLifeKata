@@ -61,5 +61,17 @@
 		</java>
 	</target>
 
+	<target name="run_console">
+		<java fork="true" classname="kata.gameoflife.ConwayGameOfLife" dir="${bin.dir}">
+			<arg value="-h"/>
+			<classpath>
+				<fileset dir="${bin.dir.lib}" includes="*.jar"/>
+				<pathelement location="${classes.dir}"/>
+				<pathelement path="${classes.dir}"/>
+				<fileset dir="${bin.dir.resources}" includes="*.txt"/>
+			</classpath>
+		</java>
+	</target>
+
 	<target name="main" depends="copy,compile,run"/>
 </project>
