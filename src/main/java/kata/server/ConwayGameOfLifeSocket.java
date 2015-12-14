@@ -31,11 +31,11 @@ public class ConwayGameOfLifeSocket {
 	public void handleMessage(String message) {
 		/* Example, check the name of the message, and if it is a begin message then set some kind of fixed rate
 		   execution to help visualize conways game of life:
-
 		   executor.scheduleAtFixedRate( () -> { send("MESSAGE"); },0, 1, TimeUnit.Seconds );
-			
-		*/
 		   
+		   There are multiple ways to handle this, we can do a fixed rate 
+		*/
+
 	}
 
 	// Called if there is an error that needs to be handled.

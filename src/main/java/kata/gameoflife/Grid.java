@@ -7,6 +7,7 @@ import java.nio.file.Paths;
 import java.nio.charset.Charset;
 import java.util.List;
 import java.io.IOException;
+import java.util.Scanner;
 
 public class Grid {
   private boolean[][] grid = new boolean[4][8];
@@ -76,12 +77,27 @@ public class Grid {
     if(isAlive && (aliveNeighbor == 2 || aliveNeighbor == 3)){
       return true;
     }
-    if(!(isAlive) && aliveNeighbor == 3){
+    if((!isAlive) && aliveNeighbor == 3){
       return true;
     }
 
     return false;
 
+  }
+
+  public void printGrid() {
+    System.out.print("\n\n\n\t\t\t\t");
+    for (int i = 0; i < height; i++) {
+      for (int j = 0; j < width; j++) {
+        if (isNeighborAlive(i, j)) {
+          System.out.print("*");
+        } else {
+          System.out.print("-");
+        }
+      }
+      System.out.print("\n\t\t\t\t");
+    }
+    System.out.print("\n\n\n");
   }
 
   public boolean[][] nextGenerationGrid() {
